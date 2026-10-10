@@ -5,198 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoxProduct — Панель аналитики (Dashboard)</title>
-    <style>
-        /* Базовые стили согласно требованиям Задания 4 */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background-color: #121214;
-            /* Глубокий графитовый фон из ТЗ */
-            color: #FFFFFF;
-            /* Белый текст */
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Боковая панель навигации (Sidebar) */
-        aside {
-            width: 240px;
-            background-color: #1A1A1E;
-            /* Цвет меню из ТЗ */
-            padding: 24px;
-            box-sizing: border-box;
-            border-right: 1px solid #222226;
-        }
-
-        aside .logo {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 40px;
-            color: #FFFFFF;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            margin-bottom: 20px;
-        }
-
-        nav ul li a {
-            color: #8E8E93;
-            /* Тускло-серый для неактивных пунктов */
-            text-decoration: none;
-            font-size: 16px;
-            display: block;
-        }
-
-        nav ul li a.active {
-            color: #FFFFFF;
-            /* Ярко-белый для активного Dashboard */
-            font-weight: bold;
-        }
-
-        /* Основная рабочая область */
-        main {
-            flex: 1;
-            padding: 40px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        /* Верхняя шапка рабочей зоны */
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        /* Форма импорта файлов (Drag-and-Drop) */
-        .upload-section {
-            background-color: #1A1A1E;
-            border: 2px dashed #2563EB;
-            /* Акцентная синяя пунктирная граница из ТЗ */
-            border-radius: 8px;
-            /* Скругленные углы карточек */
-            padding: 40px;
-            text-align: center;
-        }
-
-        .upload-section p {
-            margin: 0;
-            font-size: 16px;
-            color: #8E8E93;
-        }
-
-        .upload-section button {
-            margin-top: 16px;
-            background-color: #2563EB;
-            /* Фирменная синяя кнопка */
-            color: #FFFFFF;
-            border: none;
-            padding: 10px 20px;
-            font-size: 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        /* Сетка для аналитических карточек */
-        .analytics-grid {
-            display: flex;
-            gap: 40px;
-        }
-
-        /* Карточки-модули под графики */
-        article {
-            flex: 1;
-            background-color: #1A1A1E;
-            /* Плотный темно-серый цвет карточек */
-            border-radius: 8px;
-            padding: 24px;
-            box-sizing: border-box;
-            min-height: 300px;
-        }
-
-        article h2 {
-            margin-top: 0;
-            margin-bottom: 24px;
-            font-size: 18px;
-            font-weight: 500;
-            color: #FFFFFF;
-        }
-
-        /* Имитация графиков базовыми блоками */
-        .chart-placeholder {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #222226;
-            border-radius: 6px;
-            color: #8E8E93;
-            font-size: 14px;
-            background-color: #121214;
-        }
-
-        /* Косметический подвал */
-        footer {
-            margin-top: auto;
-            font-size: 12px;
-            color: #48484A;
-            text-align: center;
-        }
-    </style>
+    <!-- Подключение внешних стилей -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="page-body">
 
-    <!-- Семантическое боковое меню (Aside) -->
-    <aside>
-        <div class="logo">VoxProduct</div>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">📊 Дашборд</a></li>
-                <li><a href="#">💬 Лента отзывов</a></li>
-                <li><a href="#">⚙️ Настройки профиля</a></li>
+    <!-- Боковая панель навигации -->
+    <aside class="sidebar">
+        <div class="sidebar__logo">VoxProduct</div>
+        <nav class="sidebar__nav">
+            <ul class="sidebar__menu">
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link sidebar__link--active">📊 Дашборд</a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">💬 Лента отзывов</a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">⚙️ Настройки профиля</a>
+                </li>
             </ul>
         </nav>
     </aside>
 
-    <!-- Основной контент страницы (Main) -->
-    <main>
+    <!-- Основная рабочая область -->
+    <main class="main-content">
         <!-- Шапка страницы -->
-        <header>
-            <h1>Панель аналитики фидбека</h1>
+        <header class="main-header">
+            <h1 class="main-header__title">Панель аналитики фидбека</h1>
         </header>
 
-        <!-- Раздел загрузки файлов (Section + Form) -->
+        <!-- Раздел загрузки файлов -->
         <section class="upload-section">
-            <form action="#" method="POST" enctype="multipart/form-data">
-                <p>Перетащите сюда файл .CSV / .XLSX для запуска анализа</p>
-                <button type="button">Выбрать файл с компьютера</button>
+            <form action="#" method="POST" enctype="multipart/form-data" class="upload-form">
+                <p class="upload-form__text">Перетащите сюда файл .CSV / .XLSX для запуска анализа</p>
+                <button type="button" class="upload-form__button">Выбрать файл с компьютера</button>
             </form>
         </section>
 
-        <!-- Раздел аналитических графиков (Section + Сетка из Article) -->
+        <!-- Раздел аналитических графиков -->
         <section class="analytics-grid">
             <!-- Карточка 1: Тональность -->
-            <article>
-                <h2>Тональность отзывов</h2>
+            <article class="analytics-card">
+                <h2 class="analytics-card__title">Тональность отзывов</h2>
                 <div class="chart-placeholder">
                     [ Место под круговую диаграмму Recharts ]
                 </div>
             </article>
 
             <!-- Карточка 2: Категории -->
-            <article>
-                <h2>Топ критических категорий</h2>
+            <article class="analytics-card">
+                <h2 class="analytics-card__title">Топ критических категорий</h2>
                 <div class="chart-placeholder">
                     [ Место под столбчатый график жалоб ]
                 </div>
@@ -204,8 +64,8 @@
         </section>
 
         <!-- Подвал системы -->
-        <footer>
-            <p>&copy; 2026 VoxProduct. Проект магистратуры Программная инженерия.</p>
+        <footer class="main-footer">
+            <p class="main-footer__text">&copy; 2026 VoxProduct. Проект магистратуры Программная инженерия.</p>
         </footer>
     </main>
 
