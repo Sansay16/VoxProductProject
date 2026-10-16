@@ -32,6 +32,17 @@
     color: #FFFFFF;
 }
 
+/* Кнопка "гамбургер" для мобильного/планшетного меню (скрыта на десктопе по умолчанию) */
+.sidebar__burger {
+    display: none;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+}
+
 .sidebar__menu {
     list-style: none;
     padding: 0;
@@ -167,4 +178,50 @@
     margin: 0;
     font-size: 12px;
     color: #48484A;
+}
+
+/* ==========================================================================
+   Адаптивный режим по ТЗ (Планшеты: от 768px до 1279px)
+   ========================================================================== */
+@media (max-width: 1279px) {
+    .page-body {
+        flex-direction: column;
+        /* Главный контейнер перестраивается сверху вниз */
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 40px;
+        border-right: none;
+        border-bottom: 1px solid #222226;
+    }
+
+    .sidebar__logo {
+        margin-bottom: 0;
+        /* Убираем нижний отступ логотипа в шапке */
+    }
+
+    .sidebar__burger {
+        display: block;
+        /* Показываем иконку-бургер (☰) по ТЗ */
+    }
+
+    .sidebar__nav {
+        display: none;
+        /* Текстовое меню скрывается согласно разделу 8.2 ТЗ */
+    }
+
+    .main-content {
+        padding: 40px;
+        gap: 32px;
+    }
+
+    .analytics-grid {
+        flex-direction: column;
+        /* Карточки дашборда перестраиваются в один вертикальный ряд */
+        gap: 32px;
+    }
 }
