@@ -1,0 +1,261 @@
+/* ==========================================================================
+   Базовые и глобальные стили страницы
+   ========================================================================== */
+body {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #121214;
+}
+
+.page-body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #121214;
+  /* Глубокий графитовый фон из ТЗ */
+  color: #FFFFFF;
+  /* Белый текст */
+  display: flex;
+  min-height: 100vh;
+  border: none;
+}
+
+/* ==========================================================================
+   Боковая панель навигации (Sidebar)
+   ========================================================================== */
+.sidebar {
+  width: 240px;
+  background-color: #1A1A1E;
+  /* Цвет меню из ТЗ */
+  padding: 24px;
+  box-sizing: border-box;
+  border-right: 1px solid #222226;
+}
+
+.sidebar__logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #FFFFFF;
+}
+
+/* Кнопка "гамбургер" для мобильного/планшетного меню (скрыта на десктопе по умолчанию) */
+.sidebar__burger {
+  display: none;
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sidebar__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar__item {
+  margin-bottom: 20px;
+}
+
+.sidebar__link {
+  color: #8E8E93;
+  /* Тускло-серый для неактивных пунктов */
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.sidebar__link:hover {
+  color: #FFFFFF;
+}
+
+.sidebar__link--active {
+  color: #FFFFFF;
+  /* Ярко-белый для активного Dashboard */
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   Основная рабочая область
+   ========================================================================== */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.main-header__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Форма импорта файлов (Drag-and-Drop)
+   ========================================================================== */
+.upload-section {
+  background-color: #1A1A1E;
+  border: 2px dashed #2563EB;
+  /* Акцентная синяя пунктирная граница из ТЗ */
+  border-radius: 8px;
+  /* Скругленные углы карточек */
+  padding: 40px;
+  text-align: center;
+}
+
+.upload-form__text {
+  margin: 0;
+  font-size: 16px;
+  color: #8E8E93;
+}
+
+.upload-form__button {
+  margin-top: 16px;
+  background-color: #2563EB;
+  /* Фирменная синяя кнопка */
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.upload-form__button:hover {
+  background-color: #1D4ED8;
+  /* Затемнение кнопки при наведении */
+}
+
+/* ==========================================================================
+   Сетка для аналитических карточек и модулей
+   ========================================================================== */
+.analytics-grid {
+  display: flex;
+  gap: 40px;
+}
+
+.analytics-card {
+  flex: 1;
+  background-color: #1A1A1E;
+  /* Плотный темно-серый цвет карточек */
+  border-radius: 8px;
+  padding: 24px;
+  box-sizing: border-box;
+  min-height: 300px;
+}
+
+.analytics-card__title {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.chart-placeholder {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #222226;
+  border-radius: 6px;
+  color: #8E8E93;
+  font-size: 14px;
+  background-color: #121214;
+}
+
+/* ==========================================================================
+   Косметический подвал
+   ========================================================================== */
+.main-footer {
+  margin-top: auto;
+  text-align: center;
+}
+
+.main-footer__text {
+  margin: 0;
+  font-size: 12px;
+  color: #48484A;
+}
+
+/* ==========================================================================
+   Адаптивный режим по ТЗ (Планшеты: от 768px до 1279px)
+   ========================================================================== */
+@media (max-width: 1279px) {
+  .page-body {
+    flex-direction: column;
+    /* Главный контейнер перестраивается сверху вниз */
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    border-right: none;
+    border-bottom: 1px solid #222226;
+  }
+
+  .sidebar__logo {
+    margin-bottom: 0;
+    /* Убираем нижний отступ логотипа в шапке */
+  }
+
+  .sidebar__burger {
+    display: block;
+    /* Показываем иконку-бургер (☰) по ТЗ */
+  }
+
+  .sidebar__nav {
+    display: none;
+    /* Текстовое меню скрывается согласно разделу 8.2 ТЗ */
+  }
+
+  .main-content {
+    padding: 40px;
+    gap: 32px;
+  }
+
+  .analytics-grid {
+    flex-direction: column;
+    /* Карточки дашборда перестраиваются в один вертикальный ряд */
+    gap: 32px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .sidebar--open {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Сбрасываем внутренний отступ списка меню на планшетах */
+  .sidebar--open .sidebar__menu {
+    padding: 0;
+    margin-top: 24px;
+    /* Делает аккуратный отступ сверху от логотипа до первого пункта */
+  }
+}
+
+/* Эффект подсветки для кнопок-фильтров в ленте отзывов */
+.filter-btn {
+  transition: background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.filter-btn:hover {
+  background-color: #222226 !important;
+  /* Делает фон чуть светлее при наведении */
+  border-color: #48484A !important;
+  /* Подсвечивает границу кнопки */
+}
